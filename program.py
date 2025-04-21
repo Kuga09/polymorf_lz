@@ -2,9 +2,6 @@
 import pandas as pd
 
 
-# Получение данных из csv
-df = pd.read_csv('var1.csv')
-
 # Создание класса
 class Data:
     def __init__(self, data : pd.DataFrame):
@@ -21,14 +18,12 @@ class Data:
         return df_unique.to_csv('var1_unique.csv')
     
     # Функция, которая разделяет датафрей на два датафейма по признку "Участники гражданского оборота"
-    def divide():
-        # Фильтруем DataFrame для физ. лиц
-        df_fiz = df[df['Участники гражданского оборота'] == 'физ.лицо']
-        print(df_fiz)
+    def divide(self):
+        df_fiz = self.data[self.data["Участники гражданского оборота"] == "физ. лицо"]
+        df_yur = self.data[self.data["Участники гражданского оборота"] == "юр. лицо"]
 
-        # Фильтруем DataFrame для юр. лиц
-        df_yur = df[df['Участники гражданского оборота'] == 'юр.лицо']  
-
+        df_fiz.to_csv("fiz_lica.csv", index=False)
+        df_yur.to_csv("yur_lica.csv", index=False)
 
 
 
